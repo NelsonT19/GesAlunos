@@ -10,7 +10,7 @@
     <script type="text/javascript" src="scripts.js"></script>
     <title>GesAlunos</title>
 </head>
-<body onload ='loadNavbar();'>
+<body onload ='init();'>
   <!-- header section starts  -->
   
   <div id="nbar">
@@ -46,31 +46,54 @@
           </div>
           <div class="form-group col-md-6">
             <label for="inputMorada">Morada</label>
-            <input type="password" class="form-control" id="inputMorada" placeholder="Rua X">
+            <input class="form-control" id="inputMorada" placeholder="Rua X">
           </div>
         </div>
         <div class="form-group">
           <label for="inputDataNasc">Data Nascimento</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="//**">
+          <input type="text" class="form-control" id="inputDataNasc" placeholder="">
         </div>
         <div class="form-group">
-          <label for="inputAddress2">Telemovel</label>
+          <label for="inputTelemovel">Telemovel</label>
           <input type="text" class="form-control" id="inputTelemovel" placeholder="Inserir Numero Telemovel...">
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="inputCity">Email</label>
+            <label for="inputEmail">Email</label>
             <input type="Inserir email" class="form-control" id="inputEmail" placeholder="Inserir Email">
           </div>
         </div>
 
-        <label class="comboBox" for="turmas">Choose a class:</label>
-        <select name="turmas" id="turmas">
-          <option value="TIS-1">TIS-1</option>
-          <option value="TIS-2">TIS-2</option>
-        </select>
+        
 
-        <button type="submit" class="btn btn-primary mt-2">Inserir</button>
+        <div class="row">
+          <div class="col-sm-4">
+            <label for="tipo" class="col-sm-2 col-form-label">Tipo</label>
+            <select class="form-select"  id="tipo">
+             <option value="1">Administrator</option>
+             <option value="2">Theacher</option>
+             <option value="3">Student</option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-sm-8">
+            <label 
+            for="tipo"
+            class="col-sm-4 col-form-label">Escolher fotografia</label>
+            <input  class="form-control"  type="file" id="file">
+          </div>
+
+
+        </div>
+
+        
+
+        <button type="submit" class="btn btn-primary mt-2">Adicionar</button>
       </form>
 
     

@@ -2,10 +2,17 @@ const express = require('express')
 const path = require('path')
 const app = express()
 const PORT = 3000;
+const connection = require('./dbconnection')
 
 
 //cliente so tem acesso ao public
 app.use(express.static('./public'))
+
+
+
+app.get('/formdata',(req,res)=>{
+    res.sendFile(path.join(__dirname,'/public/formdata.html'))
+})
 
 app.get('/navbar',(req,res)=>{
     res.sendFile(path.join(__dirname,'/public/navbar.html'))
