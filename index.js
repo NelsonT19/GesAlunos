@@ -7,6 +7,9 @@ const PORT = 3000;
 //cliente so tem acesso ao public
 app.use(express.static('./public'))
 
+app.get('/navbar',(req,res)=>{
+    res.sendFile(path.join(__dirname,'/public/navbar.html'))
+})
 // pedido em http://localhost:3000\
 app.get('/',(req, res) => {
  res.sendFile(path.join(__dirname,'/public/index.html'))
