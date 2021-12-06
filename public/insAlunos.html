@@ -42,25 +42,25 @@
         <div class="form-row">
           <div class="form-group col-md-6 cold-mt-3">
             <label for="inputNome">Nome Aluno</label>
-            <input type="Nome" class="form-control" id="inputNome" placeholder="Nome">
+            <input type="Nome" class="form-control" id="nome" placeholder="Nome">
           </div>
           <div class="form-group col-md-6">
             <label for="inputMorada">Morada</label>
-            <input class="form-control" id="inputMorada" placeholder="Rua X">
+            <input class="form-control" id="morada" placeholder="Rua X">
           </div>
         </div>
         <div class="form-group">
-          <label for="inputDataNasc">Data Nascimento</label>
-          <input type="text" class="form-control" id="inputDataNasc" placeholder="">
+          <label for="dnasc">Data Nascimento</label>
+          <input type="date" class="form-control" id="data" placeholder="data Nascimento...">
         </div>
         <div class="form-group">
           <label for="inputTelemovel">Telemovel</label>
-          <input type="text" class="form-control" id="inputTelemovel" placeholder="Inserir Numero Telemovel...">
+          <input type="text" class="form-control" id="telemovel" placeholder="Inserir Numero Telemovel...">
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputEmail">Email</label>
-            <input type="Inserir email" class="form-control" id="inputEmail" placeholder="Inserir Email">
+            <input type="Inserir email" class="form-control" id="email" placeholder="Inserir Email">
           </div>
         </div>
 
@@ -70,30 +70,24 @@
           <div class="col-sm-4">
             <label for="tipo" class="col-sm-2 col-form-label">Tipo</label>
             <select class="form-select"  id="tipo">
-             <option value="1">Administrator</option>
-             <option value="2">Theacher</option>
-             <option value="3">Student</option>
-
+            
             </select>
 
           </div>
-
-        </div>
-
-        <div class="row">
+       
           <div class="col-sm-8">
             <label 
-            for="tipo"
+            for="foto"
             class="col-sm-4 col-form-label">Escolher fotografia</label>
             <input  class="form-control"  type="file" id="file">
           </div>
 
 
-        </div>
+    
 
-        
+      </div>
 
-        <button type="submit" class="btn btn-primary mt-2">Adicionar</button>
+        <button type="button" class="btn btn-primary mt-2" onclick="getDados();">Adicionar</button>
       </form>
 
     
