@@ -26,7 +26,7 @@ function getTipos(){
 
         for(let i=0; i<data.length; i++){
             const op = 
-            `<option value"${data[i].idtipo}">${data[i].designacao}</option>`
+            `<option value="${data[i].idtipo}">${data[i].designacao}</option>`
             tipos.innerHTML += op
         }
     })
@@ -36,12 +36,25 @@ function getTipos(){
 function getDados(){
     const name = document.getElementById('nome').value
     const morada = document.getElementById('morada').value
+    const numP = document.getElementById('numPort').value
     const data = document.getElementById('data').value
     const email = document.getElementById('email').value
     const tipo = document.getElementById('tipo').value
+    const numeroTele = document.getElementById('telemovel').value
 
-    
-    const dados = {name,morada,data,email,tipo}
-    console.log(dados)
+    if(name!= ''&& morada != '' && numP!='' && data!=''&& email!= ''&& tipo!= ''&& numeroTele!= ''){
+    //passar para inteiro
+    numero = parseInt(numeroTele);
+    if(Number.isInteger(numero)){
+        const dados = {name,morada,data,email,tipo,numero}
+        console.log(dados);
+    }else{
+        alert('Número inválido...')
+    }
+
+}else{
+    alert('Preencha todos os campos!')
+    }
 }
+
 

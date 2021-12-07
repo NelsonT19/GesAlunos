@@ -10,7 +10,7 @@
     <script type="text/javascript" src="scripts.js"></script>
     <title>GesAlunos</title>
 </head>
-<body onload ='loadNavbar();'>
+<body onload ='init();'>
   <!-- header section starts  -->
   
   <div id="nbar">
@@ -49,12 +49,12 @@
                
                 <div class="form-group">
                   <label for="email">Email Address</label>
-                  <input type="email" class="form-control" id="email" name="email" onclick="login();" placeholder="Put here your email">
+                  <input type="email" class="form-control" id="email" name="email"  placeholder="Put here your email">
                 </div>
       
                 <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="password" class="form-control" id="password" name="password"  onclick="login();" placeholder="Put here your password">
+                  <input type="password" class="form-control" id="password" name="password"   placeholder="Put here your password">
                 </div>
                 
                 <button style="width:100%; height:100%" type="submit" id="btnLogin" class="btn-primary">Login</button>
