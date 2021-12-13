@@ -7,9 +7,13 @@ const PORT = 3000;
 //cliente so tem acesso ao public
 app.use(express.static('./public'))
 
+app.use(express.urlencoded({extended:true}))
+app.use(express.json({extended:false}))
+
 //define as rotas possiveis
 app.use('/navbar',require('./routes/navbarRoute'))
 app.use('/formdata',require('./routes/formdataRoute'))
+app.use('/utilizador',require('./routes/inserirutilizadorRoute'))
 
 
 
