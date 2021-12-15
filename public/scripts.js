@@ -115,3 +115,47 @@ function getData(){
        
     )}
 
+//fnção para inserir imgem no formulario de inserir o utilizador
+    
+
+
+function sendImage(){
+    const image = document.getElementById('file').files[0]
+    const nomeutilizador = document.getElementById('nome').value
+    const morada_rua = document.getElementById('morada').value
+    const morada_num = document.getElementById('numPort').value
+    const dnasc = document.getElementById('data').value
+    const email = document.getElementById('email').value
+    const telem = document.getElementById('telemovel').value
+    const tipo = document.getElementById('tipo').value
+    let fd = new FormData()
+    fd.append('image',image)
+    fd.append('nomeutilizador',nomeutilizador)
+    fd.append('morada_rua',morada_rua)
+    fd.append('morada_num',morada_num)
+    fd.append('dnasc',dnasc)
+    fd.append('email',email)
+    fd.append('telem',telem)
+    fd.append('tipo',tipo)
+    if(image == undefined)
+        alert('Não há imagem selecionada!')
+    else{
+        var options = {
+            method:'POST',
+            headers: {
+                'Accept' : 'application/json'
+            },
+            body: fd
+        }
+        fetch('http://localhost:3000/foto',options)
+        .then(res => res.json())
+        .then(data => alert(data.res))
+        .catch((err) => {
+            console.log('Request failed', err.message)
+        });
+
+    
+    }
+}
+
+
