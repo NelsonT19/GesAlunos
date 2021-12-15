@@ -4,6 +4,7 @@ const cors = require('cors')
 const multer = require('multer')
 const app = express()
 const PORT = 3000;
+const connection = require('./dbconnection')
 
 
 
@@ -17,7 +18,7 @@ app.use(express.json({extended:false}))
 //define as rotas possiveis
 app.use('/navbar',require('./routes/navbarRoute'))
 app.use('/formdata',require('./routes/formdataRoute'))
-app.use('/utilizador',require('./routes/inserirutilizadorRoute'))
+//app.use('/utilizador',require('./routes/inserirutilizadorRoute'))
 
 
 
@@ -51,13 +52,15 @@ app.use((req,res,next) => {
     next();
 })
 
+let filename
 
 const storage = multer.diskStorage({
     destination: (req,file,callback)=>{
         callback(null, './public/img')
     },
     filename: (req,file,callback)=>{
-        callback(null, file.originalname)
+        filename = Date.now() + '--' + file.originalname
+        callback(null,filename)
     }
 })
 
@@ -66,15 +69,22 @@ const upload = multer({
     limits: {fileSize: 1000000}
 }).single('image')
 
-app.post('/foto',(req, res) => {
+app.post('/utilizador',(req, res) => {
     upload(req, res, (err)=>{
-        console.log(req.body.nomeutilizador)
-        console.log(req.body.morada_rua)
-        console.log(req.body.morada_num)
-        console.log(req.body.dnasc)
-        console.log(req.body.email)
-        console.log(req.body.telem)
-        console.log(req.body.tipo)
+        console.log(req.file)
+        console.log(path.extname(req.file.filename))
+        connection.query(
+            'INSERT INTO utilizadores (nomeutilizador,moradarua,moradanumero,datanascimento,telemovel,email,idtipo,fotourl) VALUES (?,?,?,?,?,?,?,?)', 
+            [req.body.nomeutilizador,req.body.moradarua, req.body.moradanumero,req.body.datanascimento,req.body.telemovel,req.body.email,req.body.idtipo,filename],     
+            (err,result) => {
+            if(err){
+                console.log(err)
+            }
+            else {
+                console.log('Novo ID: '+ result.insertId)
+                res.json({res : 'Utilizador adicionado com sucesso!'})
+            }
+        })
         if(err){
             res.json({res: err})
         } else {
@@ -83,9 +93,14 @@ app.post('/foto',(req, res) => {
             }
             else{
                 console.log(req.file)
-                res.json({res:'Sucesso!'})
+                console.log(path.extname(req.file.filename))
+                
             }           
         }
+       
     })  
   });
+
+ 
+  
 /*--------------------iserir imagem------------*/

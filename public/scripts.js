@@ -120,23 +120,65 @@ function getData(){
 
 
 function sendImage(){
-    const image = document.getElementById('file').files[0]
-    const nomeutilizador = document.getElementById('nome').value
+
+    const nome = document.getElementById('nome').value
+    if(nome=='')
+        alert('Tem de preencher o nome.')
+
     const morada_rua = document.getElementById('morada').value
+    if(morada_rua=='')
+        alert('Tem de preencher a rua.')
+
     const morada_num = document.getElementById('numPort').value
+    if(morada_num=='')
+        alert('Tem de preencher o número.')
+
     const dnasc = document.getElementById('data').value
+    if(dnasc=='')
+        alert('Tem de indicar uma data de nascimento.')
+    
     const email = document.getElementById('email').value
+    if(email=='')
+        alert('Tem de indicar um email.')
+
     const telem = document.getElementById('telemovel').value
+    if(telem=='')
+        alert('Tem de indicar um telemóvel.')
+    else {
+        let i = 0
+        for(i; i<telem.length; i++){
+            let c = telem.charAt(i)
+            console.log(c)
+            if(isNaN(c)){
+                alert('Numero inválido')
+                console.log('número inválido')
+                break
+            }       
+        }
+        console.log(i)
+        if(i == telem.length){
+            const telemInt = parseInt(telem)
+            console.log(telemInt)
+        }
+    }
+
     const tipo = document.getElementById('tipo').value
+    if(tipo=='')
+        alert('Tem de indicar um tipo')
+        else console.log(tipo)
+
+
+    const image= document.getElementById('file').files[0]
+
     let fd = new FormData()
     fd.append('image',image)
-    fd.append('nomeutilizador',nomeutilizador)
-    fd.append('morada_rua',morada_rua)
-    fd.append('morada_num',morada_num)
-    fd.append('dnasc',dnasc)
+    fd.append('nomeutilizador',nome)
+    fd.append('moradarua',morada_rua)
+    fd.append('moradanumero',morada_num)
+    fd.append('datanascimento',dnasc)
     fd.append('email',email)
-    fd.append('telem',telem)
-    fd.append('tipo',tipo)
+    fd.append('telemovel',telem)
+    fd.append('idtipo',tipo)
     if(image == undefined)
         alert('Não há imagem selecionada!')
     else{
@@ -147,14 +189,12 @@ function sendImage(){
             },
             body: fd
         }
-        fetch('http://localhost:3000/foto',options)
+        fetch('http://localhost:3000/utilizador',options)
         .then(res => res.json())
         .then(data => alert(data.res))
         .catch((err) => {
             console.log('Request failed', err.message)
         });
-
-    
     }
 }
 
